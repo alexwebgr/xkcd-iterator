@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscriber: one
+  comic: one
+  subscription: one
+
+two:
+  subscriber: two
+  comic: two
+  subscription: two

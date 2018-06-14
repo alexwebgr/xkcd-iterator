@@ -1,0 +1,34 @@
+<div class="d-flex my-2">
+  <div>
+    <h1>
+      XKCD
+      <% if @comic %>
+        #<span class="comicId"><%= @comic.num %></span>
+      <% else %>
+        <%= link_to root_url do %>
+          Iterator
+        <% end %>
+      <% end %>
+    </h1>
+  </div>
+  <div class="ml-auto">
+    <%= link_to iterator_update_tree_path, class: 'btn btn-light', title: 'Make sure you are seeing the latest comic' do %>
+      <%= faw_icon 'solid', 'sync' %>
+    <% end %>
+    <%= link_to root_url, class: 'btn btn-light', title: 'Navigate to home page' do %>
+      <%= faw_icon 'solid', 'home' %>
+    <% end %>
+    <% if logged_in %>
+      <%= link_to dashboard_show_path, class: 'btn btn-light', title: 'Dashboard' do %>
+        <%= faw_icon 'solid', 'user' %>
+      <% end %>
+    <% else %>
+      <%= link_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google' do %>
+        <%= faw_icon 'brand', 'google' %>
+      <% end %>
+      <%= link_to login_show_path, class: 'btn btn-light', title: 'Login with email' do %>
+        <%= faw_icon 'solid', 'magic' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+
+  <strong>Subscriber:</strong>
+  <%= @email_receipt.subscriber.eamil %>
+</p>
+
+<p>
+  <strong>Comic:</strong>
+  <%= @email_receipt.comic.num %>
+</p>
+
+<p>
+  <strong>Subscription:</strong>
+  <%= @email_receipt.subscription.label %>
+</p>
+
+<%= link_to 'Edit', edit_email_receipt_path(@email_receipt) %> |
+<%= link_to 'Back', email_receipts_path %>

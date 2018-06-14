@@ -1,0 +1,90 @@
+body {
+    background: #eaeaea;
+    font-size: 12pt;
+    font-family: Lucida, Helvetica, sans-serif;
+}
+
+input[type=submit] {
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+    margin-left: 30px;
+}
+
+a {
+    color: darkblue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    #mainMenu.nav-pills > li:first-child {
+        padding-right: 5px;
+    }
+
+    #mainMenu.nav-pills > li:last-child {
+        padding-left: 5px;
+    }
+}
+
+#mainMenu.nav-pills > li > a {
+    background-color: #6e7b91;
+    border: 1.5px solid #333;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 0 gray;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 4px;
+    padding: 1.5px 12px;
+    text-decoration: none;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+}
+
+/* end */
+
+.comicWrapper {
+    overflow: auto;
+    margin: 10px 0;
+}
+
+h1, h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a:focus,
+.btn:focus,
+.btn-light:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.favorited {
+    color: goldenrod;
+    fill: goldenrod;
+}

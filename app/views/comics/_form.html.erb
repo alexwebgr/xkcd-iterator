@@ -1,0 +1,62 @@
+<%= form_with(model: comic, local: true) do |form| %>
+  <% if comic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+
+      <ul>
+      <% comic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :num %>
+    <%= form.text_field :num, id: :comic_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :comic_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :safe_title %>
+    <%= form.text_field :safe_title, id: :comic_safe_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_url %>
+    <%= form.text_field :img_url, id: :comic_img_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alt_text %>
+    <%= form.text_area :alt_text, id: :comic_alt_text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.text_field :day, id: :comic_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :month %>
+    <%= form.text_field :month, id: :comic_month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year, id: :comic_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transcript %>
+    <%= form.text_area :transcript, id: :comic_transcript %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

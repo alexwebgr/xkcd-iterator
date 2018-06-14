@@ -1,0 +1,47 @@
+<p>
+  <strong>Num:</strong>
+  <%= @comic.num %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @comic.title %>
+</p>
+
+<p>
+  <strong>Safe title:</strong>
+  <%= @comic.safe_title %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @comic.img_url %>
+</p>
+
+<p>
+  <strong>Alt text:</strong>
+  <%= @comic.alt_text %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @comic.day %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @comic.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @comic.year %>
+</p>
+
+<p>
+  <strong>Transcript:</strong>
+  <%= @comic.transcript %>
+</p>
+
+<%= link_to 'Edit', edit_comic_path(@comic) %> |
+<%= link_to 'Back', comics_path %>

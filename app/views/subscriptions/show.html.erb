@@ -1,0 +1,22 @@
+<p>
+  <strong>Subs name:</strong>
+  <%= @subscription.subs_name %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @subscription.label %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @subscription.active %>
+</p>
+
+<p>
+  <strong>Subscriber:</strong>
+  <%= @subscription.subscriber %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>

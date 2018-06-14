@@ -1,0 +1,32 @@
+<%= form_with(model: email_receipt, local: true) do |form| %>
+  <% if email_receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(email_receipt.errors.count, "error") %> prohibited this email_receipt from being saved:</h2>
+
+      <ul>
+      <% email_receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subscriber_id %>
+    <%= form.text_field :subscriber_id, id: :email_receipt_subscriber_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comic_id %>
+    <%= form.text_field :comic_id, id: :email_receipt_comic_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subscription_id %>
+    <%= form.text_field :subscription_id, id: :email_receipt_subscription_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

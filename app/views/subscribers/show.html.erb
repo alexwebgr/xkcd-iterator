@@ -1,0 +1,17 @@
+<p>
+  <strong>Firstname:</strong>
+  <%= @subscriber.firstname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @subscriber.email %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @subscriber.verified %>
+</p>
+
+<%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
+<%= link_to 'Back', subscribers_path %>

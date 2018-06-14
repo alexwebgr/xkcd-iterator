@@ -1,0 +1,29 @@
+<h1>Email Receipts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subscriber</th>
+      <th>Comic</th>
+      <th>Subscription</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @email_receipts.each do |email_receipt| %>
+      <tr>
+        <td><%= email_receipt.subscriber.email %></td>
+        <td><%= email_receipt.comic.num %></td>
+        <td><%= email_receipt.subscription.label %></td>
+        <td><%= link_to 'Show', email_receipt %></td>
+        <td><%= link_to 'Edit', edit_email_receipt_path(email_receipt) %></td>
+        <td><%= link_to 'Destroy', email_receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Email Receipt', new_email_receipt_path %>

@@ -1,0 +1,40 @@
+<div id="comicDisplay">
+  <h1>XKCD #<%= @comic.num %></h1>
+  <h3>
+    <%= link_to @comic.title, iterator_show_url(@comic.num) %>
+    <%= link_to 'View at xkcd', "http://xkcd.com/#{@comic.num}", style: 'float: right;' %>
+  </h3>
+  <div class="comicWrapper">
+    <%= tag :img, {src: @comic.img_url, class: 'comicPic', alt: @comic.alt_text, title: @comic_alt_text} %>
+  </div>
+  <p>
+    <%= @comic.alt_text %>
+  </p>
+</div>
+
+<hr />
+<hr />
+
+<p>
+  All artwork belongs to xkcd.com and the respective copyright holders. XKCD WebComic Iterator is an absolutely free service that allows users to browse all xkcd comics
+  and also provides a subscription service that delivers one comic everyday to their mailbox. <br />
+  XKCD WebComic Iterator is not affiliated in way with the xkcd.com website or its creator(s).
+</p>
+<p>
+  Users will never see ads or any other form of monetization on the newsletter or the website.
+</p>
+
+<hr />
+
+<p>
+  Warning from <a href="http://xkcd.com">xkcd.com</a> : This comic occasionally contains strong language (which may be unsuitable for children),
+  unusual humor (which may be unsuitable for adults), and advanced mathematics (which may be unsuitable for liberal-arts majors).
+</p>
+
+<hr />
+<hr />
+
+<p>
+  You are receiving this email after filling out the subscription from at the <%= link_to 'website', root_url %> to stop receiving this kind of emails
+  please login to your <%= link_to 'Dashboard', dashboard_show_url %>
+</p>

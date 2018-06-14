@@ -1,0 +1,48 @@
+<div class="col">
+  <div class="d-flex">
+    <div class="controls">
+    <%= link_to navigate_previous_comic(params[:comic_num]), class: 'btn btn-light previous', title: 'Navigate to the previous comic' do %>
+      <%= faw_icon 'solid', 'chevron-left' %>
+    <% end %>
+    <%= link_to navigate_random_comic, class: 'btn btn-light random', title: 'Navigate to a random comic' do %>
+      <%= faw_icon 'solid', 'random' %>
+    <% end %>
+    <%= link_to navigate_next_comic(params[:comic_num]), class: 'btn btn-light next', title: 'Navigate to the next comic' do %>
+      <%= faw_icon 'solid', 'chevron-right' %>
+    <% end %>
+    </div>
+    <div class="ml-auto">
+    <% if favorited(params[:comic_num]).present? %>
+      <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), method: :delete, class: 'btn btn-light active', title: 'Remove from favorites list' do %>
+        <%= faw_icon 'solid', 'star', {extra_class: 'favorited'} %>
+      <% end %>
+    <% else %>
+      <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: 'btn btn-light', title: 'Save current comic in your favorites list' do %>
+        <%= faw_icon 'solid', 'star' %>
+      <% end %>
+    <% end %>
+    <%= link_to navigate_xkcd(params[:comic_num]), class: 'btn btn-light externalLnk', title: 'Navigate to the xkcd website', target: '_blank' do %>
+      <%= faw_icon 'solid', 'external-link' %>
+    <% end %>
+    </div>
+ </div>
+  <div id="comicDisplay">
+    <h3>
+      <span class="comicTitle"><%= @comic.title %></span>
+    </h3>
+    <div class="comicWrapper" ondragstart="return false;">
+      <%= tag :img, {src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text} %>
+    </div>
+  </div>
+  <div class="controls">
+    <%= link_to navigate_previous_comic(params[:comic_num]), class: 'btn btn-light previous', title: 'Navigate to the previous comic' do %>
+      <%= faw_icon 'solid', 'chevron-left' %>
+    <% end %>
+    <%= link_to navigate_random_comic, class: 'btn btn-light random', title: 'Navigate to a random comic' do %>
+      <%= faw_icon 'solid', 'random' %>
+    <% end %>
+    <%= link_to navigate_next_comic(params[:comic_num]), class: 'btn btn-light next', title: 'Navigate to the next comic' do %>
+      <%= faw_icon 'solid', 'chevron-right' %>
+    <% end %>
+  </div>
+</div>

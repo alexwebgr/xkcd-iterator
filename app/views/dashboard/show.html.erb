@@ -1,0 +1,73 @@
+<div class="col">
+  <div class="d-flex">
+    <h2>Dashboard</h2>
+    <div class="ml-auto">
+      You are logged in as <strong><%= current_subscriber.email %></strong>
+      <%= link_to 'Logout', login_destroy_path, class: 'btn btn-light btn-sm', method: :delete, title: 'Logout' %>
+    </div>
+  </div>
+
+  <div class="my-4">
+    <h3>My favorites</h3>
+    <% current_subscriber.favorites.each do |favorite| %>
+      <div class="d-flex my-2">
+        <%= link_to dashboard_remove_from_faves_path(favorite.id), method: :delete, class: 'btn btn-light btn-sm', title: 'Remove from favorites' do %>
+          <%= faw_icon 'solid', 'trash' %>
+        <% end %>
+        <%= link_to favorite.comic.title, iterator_show_path(favorite.comic.num), target: '_blank', title: 'Navigate to comic', class: 'ml-2 mt-1' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Subscriptions</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+      </tr>
+      <% current_subscriber.subscriptions.each do |subscription| %>
+        <tr>
+          <td><%= subscription.label %></td>
+          <td>
+            <% if subscription.active == 't' %>
+              <%= link_to dashboard_deactivate_subscription_path(subscription.subscriber_id), method: :delete, class: 'btn btn-light active', title: 'Unsubscribe' do %>
+                Unsubscribe
+              <% end %>
+            <% else %>
+              <%= link_to dashboard_activate_subscription_path(subscription.subscriber_id), class: 'btn btn-light', title: 'Subscribe' do %>
+                Subscribe
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= subscription.created_at %></td>
+          <td><%= subscription.updated_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div>
+    <h3>Comics received</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Sent to</th>
+        <th>Sent on</th>
+      </tr>
+      <% current_subscriber.email_receipts.each do |email_receipt| %>
+        <tr>
+          <td><%= email_receipt.comic.num %></td>
+          <td>
+            <%= link_to email_receipt.comic.title, iterator_show_path(email_receipt.comic.num), target: '_blank', title: 'Navigate to comic' %>
+          </td>
+          <td><%= email_receipt.subscriber.email %></td>
+          <td><%= email_receipt.created_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

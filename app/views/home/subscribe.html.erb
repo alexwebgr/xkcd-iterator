@@ -1,0 +1,33 @@
+<div class="col">
+  <h2>Subscribe</h2>
+  <div>
+    <p>Enter your details below for your daily XKCD fix.</p>
+    <%= form_with(model: @subscriber, local: true, url: home_do_subscribe_path,html: {id: 'subscribeForm'}) do |form| %>
+      <% if @subscriber.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@subscriber.errors.count, "error") %> prohibited this subscriber from being saved:</h2>
+
+          <ul>
+            <% @subscriber.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :firstname %>
+        <%= form.text_field :firstname, id: :subscriber_firstname %>
+      </div>
+
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.text_field :email, id: :subscriber_email %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit value: 'Get Hooked !' %>
+      </div>
+    <% end %>
+  </div>
+</div>
