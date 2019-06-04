@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'iterator/add_to_faves/:comic_num', to: 'iterator#add_to_faves', as: 'iterator_add_to_faves'
   delete 'iterator/remove_from_faves/:favorite_id', to: 'iterator#remove_from_faves', as: 'iterator_remove_from_faves'
   get 'iterator/update_tree'
-  get 'iterator/send_email'
 
   get 'home/who'
   get 'home/subscribe'

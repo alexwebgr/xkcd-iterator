@@ -1,7 +1,6 @@
 class IteratorController < ApplicationController
   before_action :require_login, only: [:add_to_faves, :remove_from_faves]
   before_action :set_comic, only: [:show, :add_to_faves]
-  before_action :require_admin_subscriber, only: [:send_email]
 
   def show
     if params[:comic_num].nil?
