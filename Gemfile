@@ -12,17 +12,16 @@ gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap', '~> 4'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'hammerjs-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'puma'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -37,7 +36,7 @@ gem 'whenever'
 # gem 'capistrano-rails', group: :development
 gem 'unicorn'
 gem 'listen', '>= 3.0.5', '< 3.2'
-gem 'faw_icon', '~> 0.8.4'
+gem 'faw_icon', '~> 1.0.0'
 gem 'bootsnap', require: false
 
 group :development, :test do
