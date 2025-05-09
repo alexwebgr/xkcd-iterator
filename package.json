@@ -1,5 +1,17 @@
 {
   "name": "xkcd-iterator-v2",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5",
+    "esbuild": "^0.25.3",
+    "jquery": "^3.7.1",
+    "sass": "^1.87.0"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --loader:.svg=file",
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  }
 }

@@ -10,9 +10,5 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
-//= require jquery
-//= require popper
-//= require bootstrap-sprockets
-//= require hammer.min
+import "@hotwired/turbo-rails"
+import "./controllers"

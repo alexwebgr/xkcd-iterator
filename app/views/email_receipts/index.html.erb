@@ -18,7 +18,7 @@
         <td><%= email_receipt.subscription.label %></td>
         <td><%= link_to 'Show', email_receipt %></td>
         <td><%= link_to 'Edit', edit_email_receipt_path(email_receipt) %></td>
-        <td><%= link_to 'Destroy', email_receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', email_receipt, data: { 'turbo-method': :delete, confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

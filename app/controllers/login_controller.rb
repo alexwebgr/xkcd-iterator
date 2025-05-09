@@ -42,9 +42,9 @@ class LoginController < ApplicationController
   end
 
   def validate_user
-    ppr = BCrypt::Password.new(URI.decode(params[:ppr]))
+    ppr = BCrypt::Password.new(URI.decode_uri_component(params[:ppr]))
 
-    @subscriber = Subscriber.find_by(token: URI.decode(params[:salt]))
+    @subscriber = Subscriber.find_by(token: URI.decode_uri_component(params[:salt]))
 
     if @subscriber.present? && ppr == @subscriber.email
       @subscriber.update_attribute(:verified, true)

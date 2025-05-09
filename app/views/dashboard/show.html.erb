@@ -3,7 +3,7 @@
     <h2>Dashboard</h2>
     <div class="ml-auto">
       You are logged in as <strong><%= current_subscriber.email %></strong>
-      <%= link_to 'Logout', login_destroy_path, class: 'btn btn-light btn-sm', method: :delete, title: 'Logout' %>
+      <%= link_to 'Logout', login_destroy_path, class: 'btn btn-light btn-sm', data: { 'turbo-method': :delete }, title: 'Logout' %>
     </div>
   </div>
 
@@ -11,7 +11,7 @@
     <h3>My favorites</h3>
     <% current_subscriber.favorites.each do |favorite| %>
       <div class="d-flex my-2">
-        <%= link_to dashboard_remove_from_faves_path(favorite.id), method: :delete, class: 'btn btn-light btn-sm', title: 'Remove from favorites' do %>
+        <%= link_to dashboard_remove_from_faves_path(favorite.id), data: { 'turbo-method': :delete }, class: 'btn btn-light btn-sm', title: 'Remove from favorites' do %>
           <%= faw_icon 'solid', 'trash' %>
         <% end %>
         <%= link_to favorite.comic.title, iterator_show_path(favorite.comic.num), target: '_blank', title: 'Navigate to comic', class: 'ml-2 mt-1' %>
@@ -33,7 +33,7 @@
           <td><%= subscription.label %></td>
           <td>
             <% if subscription.active == 't' %>
-              <%= link_to dashboard_deactivate_subscription_path(subscription.subscriber_id), method: :delete, class: 'btn btn-light active', title: 'Unsubscribe' do %>
+              <%= link_to dashboard_deactivate_subscription_path(subscription.subscriber_id), data: { 'turbo-method': :delete }, class: 'btn btn-light active', title: 'Unsubscribe' do %>
                 Unsubscribe
               <% end %>
             <% else %>

@@ -11,7 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap";
-@import "flash";
-@import "theme";
-@import "fa-svg-with-js";
+@use "bootstrap/dist/css/bootstrap.min.css";
+@use "theme";
+@use "fontawesome/css/svg-with-js";

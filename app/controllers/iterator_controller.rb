@@ -1,5 +1,6 @@
 class IteratorController < ApplicationController
   before_action :require_login, only: [:add_to_faves, :remove_from_faves]
+  skip_before_action :require_admin_subscriber
   before_action :set_comic, only: [:show, :add_to_faves]
 
   def show
