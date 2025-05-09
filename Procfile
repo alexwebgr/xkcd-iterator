@@ -1,4 +1,2 @@
 web: bin/rails server -p 4000
-js: yarn build --watch
-css: yarn build:css --watch
 worker: bundle exec rails solid_queue:start

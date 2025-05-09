@@ -1,0 +1,28 @@
+# production:
+#   periodic_cleanup:
+#     class: CleanSoftDeletedRecordsJob
+#     queue: background
+#     args: [ 1000, { batch_size: 500 } ]
+#     schedule: every hour
+#   periodic_command:
+#     command: "SoftDeletedRecord.due.delete_all"
+#     priority: 2
+#     schedule: at 5am every day
+
+development:
+#  daily_newsletter:
+#    command: "Subscription.send_comic"
+#    queue: default
+#    schedule: 'every minute'
+
+production:
+  daily_newsletter:
+    command: "Subscription.send_comic"
+    queue: default
+#    schedule: 'every minute'
+    schedule: 'every day at 7am'
+  update_tree:
+    command: "Subscription.send_comic"
+    queue: default
+    schedule: 'every sunday at 1pm'
+
