@@ -58,9 +58,4 @@ development:
 
 production:
   <<: *default
-  database: <%= ENV['database'] %>
-  host: <%= ENV['host'] %>
-  username: <%= ENV['username'] %>
-  password: <%= ENV['password'] %>
-  pool: 5
-  timeout: 5000
+  url: <%= ENV['DATABASE_URL'] %>
