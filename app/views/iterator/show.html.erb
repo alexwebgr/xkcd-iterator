@@ -30,7 +30,7 @@
   <div id="comicDisplay">
     <% if @comic %>
       <h3><%= @comic.title %></h3>
-      <div class="comicWrapper">
+      <div class="comicWrapper" style="<%= !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}px; height: #{@comic.height}px;" : "" %>">
         <%= tag :img, {src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text} %>
       </div>
     <% end %>

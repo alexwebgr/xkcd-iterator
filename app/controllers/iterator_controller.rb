@@ -5,7 +5,7 @@ class IteratorController < ApplicationController
 
   def show
     if params[:comic_num].nil?
-      params[:comic_num]  = Comic.last_num
+      params[:comic_num] = Comic.last_num
     end
   end
 
@@ -25,7 +25,7 @@ class IteratorController < ApplicationController
   end
 
   def update_tree
-    Comic.update_tree
+    ComicImporter.call
     flash[:success] = 'Tree has been updated'
 
     redirect_to root_url
@@ -34,9 +34,10 @@ class IteratorController < ApplicationController
   private
   def set_comic
     num = params[:comic_num]
+    last_num = Comic.last_num
 
-    if num.to_i > Comic.last_num || num.blank?
-      num = Comic.last_num
+    if num.to_i > last_num || num.blank?
+      num = last_num
     end
 
     @comic = Comic.by_num(num)

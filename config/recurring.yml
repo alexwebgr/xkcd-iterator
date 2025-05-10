@@ -11,7 +11,7 @@
 
 development:
   update_tree:
-    command: "Comic.update_tree"
+    command: "ComicImporter.call"
     queue: default
     schedule: 'every sunday at 1pm'
 
@@ -22,7 +22,7 @@ production:
 #    schedule: 'every hour'
     schedule: 'every day at 5am'
   update_tree:
-    command: "Comic.update_tree"
+    command: "ComicImporter.call"
     queue: default
     schedule: 'every sunday at 1pm'
 

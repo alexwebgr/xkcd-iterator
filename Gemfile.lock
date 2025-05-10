@@ -103,6 +103,7 @@ GEM
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
+    fastimage (2.4.0)
     faw_icon (1.4.0)
       nokolexbor (~> 0.6.0)
     faw_toast (1.4.0)
@@ -316,6 +317,7 @@ DEPENDENCIES
   bootsnap
   byebug
   cssbundling-rails
+  fastimage (~> 2.4)
   faw_files!
   faw_icon (~> 1.4.0)
   faw_toast
