@@ -12,3 +12,4 @@
 //
 import "@hotwired/turbo-rails"
 import "./controllers"
+import "./swipe_navigation"

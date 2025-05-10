@@ -1,12 +1,12 @@
 <div class="col">
   <div class="btn-group my-3" role="group" aria-label="Comic navigation">
-    <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Previous comic" do %>
+    <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary comic-prev", title: "Previous comic" do %>
       <%= faw_icon "solid", "chevron-left" %>
     <% end %>
     <%= link_to navigate_random_comic, class: "btn btn-outline-secondary", title: "Random comic" do %>
       <%= faw_icon "solid", "random" %>
     <% end %>
-    <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Next comic" do %>
+    <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary comic-next", title: "Next comic" do %>
       <%= faw_icon "solid", "chevron-right" %>
     <% end %>
   </div>
@@ -17,7 +17,7 @@
       <div class="comicWrapper">
         <div class="d-flex">
           <div>
-            <%= tag :img, { src: @comic.img_url, class: 'comicPic', alt: @comic.alt_text, title: @comic.alt_text, style: !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}; height: #{@comic.height};" : "" } %>
+            <%= tag :img, { src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text, style: !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}; height: #{@comic.height};" : "" } %>
           </div>
           <div class="ms-2">
             <div class="btn-group-vertical" role="group" aria-label="Comic actions">
