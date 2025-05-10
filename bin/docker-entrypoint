@@ -8,10 +8,11 @@ fi
 
 # Remove stale PID files
 # rm -f tmp/pids/server.pid
-
+echo "prepare db"
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
+  echo "prepared db"
 fi
 
 exec "${@}"
