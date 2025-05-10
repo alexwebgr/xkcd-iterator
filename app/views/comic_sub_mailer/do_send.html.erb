@@ -5,7 +5,7 @@
     <%= link_to 'View at xkcd', "http://xkcd.com/#{@comic.num}", style: 'float: right;' %>
   </h3>
   <div class="comicWrapper">
-    <%= tag :img, {src: @comic.img_url, class: 'comicPic', alt: @comic.alt_text, title: @comic_alt_text} %>
+    <%= tag :img, {src: @comic.img_url, class: 'comicPic', alt: @comic.alt_text, title: @comic.alt_text} %>
   </div>
   <p>
     <%= @comic.alt_text %>

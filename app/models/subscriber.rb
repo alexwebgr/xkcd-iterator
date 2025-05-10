@@ -8,6 +8,8 @@ class Subscriber < ApplicationRecord
   has_many :email_receipts, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
+  scope :verified, -> { where(verified: true) }
+
   # Returns the hash digest of the given string.
   def digest
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

@@ -10,6 +10,10 @@
 #     schedule: at 5am every day
 
 development:
+  daily_newsletter:
+    command: "Subscription.send_comic"
+    queue: default
+    schedule: 'every day at 5am'
   update_tree:
     command: "ComicImporter.call"
     queue: default
@@ -19,10 +23,8 @@ production:
   daily_newsletter:
     command: "Subscription.send_comic"
     queue: default
-#    schedule: 'every hour'
     schedule: 'every day at 5am'
   update_tree:
     command: "ComicImporter.call"
     queue: default
-    schedule: 'every sunday at 1pm'
-
+    schedule: 'every sunday at 4am'
