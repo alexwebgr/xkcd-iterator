@@ -1,10 +1,32 @@
-<div class="footer">
-  <div class="col text-center">
-    <p>
-      <%= link_to 'home', root_url %> |
-      <%= link_to 'who', home_who_path %> |
-      <%= link_to 'subscribe', home_subscribe_path %>
-    </p>
-    Brought to you by <a href="http://alex-web.gr/" target="_blank">alex-web.gr</a>
+<footer class="footer mt-auto py-3">
+  <div class="container-fluid">
+    <hr />
+    <div class="row">
+      <div class="col">
+        <p>
+          All artwork belongs to xkcd.com and the respective copyright holders. XKCD WebComic Iterator is an absolutely free service that allows users to browse all xkcd comics
+          and also provides a subscription service that delivers one comic everyday to their mailbox. <br />
+          XKCD WebComic Iterator is not affiliated in way with the xkcd.com website or its creator(s).
+        </p>
+        <p>
+          Users will never see ads or any other form of monetization on the newsletter or the website.
+        </p>
+        <p>
+          Warning from <a href="http://xkcd.com">xkcd.com</a> : This comic occasionally contains strong language (which may be unsuitable for children),
+          unusual humor (which may be unsuitable for adults), and advanced mathematics (which may be unsuitable for liberal-arts majors).
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <p>
+          <%= link_to 'home', root_url %> |
+          <%= link_to 'who', home_who_path %> |
+          <%= link_to 'subscribe', home_subscribe_path %>
+        </p>
+        Brought to you by <a href="http://alex-web.gr/" target="_blank">alex-web.gr</a>
+      </div>
+    </div>
   </div>
-</div>
+</footer>

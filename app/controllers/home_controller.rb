@@ -12,14 +12,13 @@ class HomeController < ApplicationController
   def do_subscribe
     @subscriber = Subscriber.new(subscriber_params)
 
-    respond_to do |format|
-      if @subscriber.save
-        Subscription.add_comic_sub(@subscriber.id)
-        Subscriber.send_access_token_email(@subscriber)
-        format.html { redirect_to root_url, notice: 'Subscriber was successfully created.' }
-      else
-        format.html { render :subscribe }
-      end
+    if @subscriber.save
+      Subscription.add_comic_sub(@subscriber.id)
+      Subscriber.send_access_token_email(@subscriber)
+
+      redirect_to root_url, notice: 'Subscriber was successfully created.'
+    else
+      render_message(:error, :unprocessable_entity, @subscriber.errors.full_messages.join(', '))
     end
   end
 

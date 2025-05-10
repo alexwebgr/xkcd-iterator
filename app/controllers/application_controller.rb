@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :reset_session
   before_action :require_admin_subscriber
 
-  helper_method :current_subscriber, :logged_in, :admin_subscriber
+  helper_method :current_subscriber, :logged_in, :admin_subscriber?
 
   def current_subscriber
     @current_subscriber ||= Subscriber.find_by(id: session[:current_subscriber_id])
@@ -12,12 +12,12 @@ class ApplicationController < ActionController::Base
     current_subscriber.present?
   end
 
-  def admin_subscriber
-    logged_in ? current_subscriber.super : false
+  def admin_subscriber?
+    logged_in ? current_subscriber.mejor : false
   end
 
   def require_admin_subscriber
-    redirect_to root_url unless admin_subscriber
+    redirect_to root_url unless admin_subscriber?
   end
 
   def go_home

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <%= toast_css_variables %>
 
@@ -9,7 +9,7 @@
     <meta name="turbo-prefetch" content="false">
 
     <title>XKCD WebComic Iterator</title>
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     <%= csrf_meta_tags %>
 
@@ -19,31 +19,14 @@
     <%= javascript_include_tag "faw_toast", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <div class="container-fluid">
+  <body class="d-flex flex-column h-100">
+    <main class="container-fluid flex-grow-1 flex-shrink-0">
       <%= render 'shared/header' %>
       <div class="row" id="content">
         <%= yield %>
       </div>
-      <hr />
-      <div class="row">
-        <div class="col">
-          <p>
-            All artwork belongs to xkcd.com and the respective copyright holders. XKCD WebComic Iterator is an absolutely free service that allows users to browse all xkcd comics
-            and also provides a subscription service that delivers one comic everyday to their mailbox. <br />
-            XKCD WebComic Iterator is not affiliated in way with the xkcd.com website or its creator(s).
-          </p>
-          <p>
-            Users will never see ads or any other form of monetization on the newsletter or the website.
-          </p>
-          <p>
-            Warning from <a href="http://xkcd.com">xkcd.com</a> : This comic occasionally contains strong language (which may be unsuitable for children),
-            unusual humor (which may be unsuitable for adults), and advanced mathematics (which may be unsuitable for liberal-arts majors).
-          </p>
-        </div>
-      </div>
-      <%= render 'shared/footer' %>
-    </div>
+    </main>
+    <%= render 'shared/footer' %>
     <%= toast_container %>
   </body>
 </html>

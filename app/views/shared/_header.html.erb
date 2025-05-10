@@ -1,34 +1,40 @@
-<div class="d-flex my-2">
-  <div>
-    <h1>
-      XKCD
-      <% if @comic %>
-        #<span class="comicId"><%= @comic.num %></span>
-      <% else %>
-        <%= link_to root_url do %>
-          Iterator
+<div class="row my-2">
+  <div class="col d-flex align-items-start justify-content-between">
+    <div>
+      <h1>
+        XKCD
+        <% if @comic %>
+          #<span class="comicId"><%= @comic.num %></span>
+        <% else %>
+          <%= link_to root_url do %>
+            Iterator
+          <% end %>
+        <% end %>
+      </h1>
+    </div>
+    <div>
+      <% if admin_subscriber? %>
+        <%= link_to iterator_update_tree_path, class: 'btn btn-light', title: 'Make sure you are seeing the latest comic' do %>
+          <%= faw_icon 'solid', 'sync' %>
         <% end %>
       <% end %>
-    </h1>
-  </div>
-  <div class="ml-auto">
-    <%= link_to iterator_update_tree_path, class: 'btn btn-light', title: 'Make sure you are seeing the latest comic' do %>
-      <%= faw_icon 'solid', 'sync' %>
-    <% end %>
-    <%= link_to root_url, class: 'btn btn-light', title: 'Navigate to home page' do %>
-      <%= faw_icon 'solid', 'home' %>
-    <% end %>
-    <% if logged_in %>
-      <%= link_to dashboard_show_path, class: 'btn btn-light', title: 'Dashboard' do %>
-        <%= faw_icon 'solid', 'user' %>
+      <%= link_to root_url, class: 'btn btn-light', title: 'Navigate to home page' do %>
+        <%= faw_icon 'solid', 'home' %>
       <% end %>
-    <% else %>
-      <%= button_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google', data: { turbo: false } do %>
-        <%= faw_icon 'brand', 'google' %>
+      <% if logged_in %>
+        <%= link_to dashboard_show_path, class: 'btn btn-light', title: 'Dashboard' do %>
+          <%= faw_icon 'solid', 'user' %>
+        <% end %>
+      <% else %>
+        <span class="d-inline-block">
+          <%= button_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google', data: { turbo: false }, style: 'display: inline-block;' do %>
+            <%= faw_icon 'brand', 'google' %>
+          <% end %>
+        </span>
+        <%= link_to login_show_path, class: 'btn btn-light', title: 'Login with email' do %>
+          <%= faw_icon 'solid', 'magic' %>
+        <% end %>
       <% end %>
-      <%= link_to login_show_path, class: 'btn btn-light', title: 'Login with email' do %>
-        <%= faw_icon 'solid', 'magic' %>
-      <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

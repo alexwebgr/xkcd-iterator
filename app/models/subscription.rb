@@ -53,8 +53,6 @@ class Subscription < ApplicationRecord
   end
 
   def self.send_comic
-    p Rails.env
-    return
     subscriber_ids = Subscription
                          .where(subs_name: 'comic_sub')
                          .where(active: true)

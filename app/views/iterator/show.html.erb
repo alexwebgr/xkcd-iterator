@@ -1,50 +1,52 @@
 <div class="col">
-  <div class="d-flex">
-    <div class="controls">
-    <%= link_to navigate_previous_comic(params[:comic_num]), class: 'btn btn-light previous', title: 'Navigate to the previous comic' do %>
-      <%= faw_icon 'solid', 'chevron-left' %>
-    <% end %>
-    <%= link_to navigate_random_comic, class: 'btn btn-light random', title: 'Navigate to a random comic' do %>
-      <%= faw_icon 'solid', 'random' %>
-    <% end %>
-    <%= link_to navigate_next_comic(params[:comic_num]), class: 'btn btn-light next', title: 'Navigate to the next comic' do %>
-      <%= faw_icon 'solid', 'chevron-right' %>
-    <% end %>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="btn-group" role="group" aria-label="Comic navigation">
+      <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Previous comic" do %>
+        <%= faw_icon "solid", "chevron-left" %>
+      <% end %>
+      <%= link_to navigate_random_comic, class: "btn btn-outline-secondary", title: "Random comic" do %>
+        <%= faw_icon "solid", "random" %>
+      <% end %>
+      <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Next comic" do %>
+        <%= faw_icon "solid", "chevron-right" %>
+      <% end %>
     </div>
-    <div class="ml-auto">
-    <% if favorited(params[:comic_num]).present? %>
-      <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), data: { 'turbo-method': :delete }, class: 'btn btn-light active', title: 'Remove from favorites list' do %>
-        <%= faw_icon 'solid', 'star', {extra_class: 'favorited'} %>
+    <div class="btn-group" role="group" aria-label="Comic actions">
+      <% if favorited(params[:comic_num]).present? %>
+        <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), data: { "turbo-method": :delete }, class: "btn btn-outline-secondary", title: "Remove from favorites" do %>
+          <%= faw_icon "solid", "star", {extra_class: "favorited"} %>
+        <% end %>
+      <% else %>
+        <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: "btn btn-outline-secondary", title: "Add to favorites" do %>
+          <%= faw_icon "solid", "star" %>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: 'btn btn-light', title: 'Save current comic in your favorites list' do %>
-        <%= faw_icon 'solid', 'star' %>
+      <%= link_to navigate_xkcd(params[:comic_num]), class: "btn btn-outline-secondary", title: "View on xkcd.com", target: "_blank" do %>
+        <%= faw_icon "solid", "external-link" %>
       <% end %>
-    <% end %>
-    <%= link_to navigate_xkcd(params[:comic_num]), class: 'btn btn-light externalLnk', title: 'Navigate to the xkcd website', target: '_blank' do %>
-      <%= faw_icon 'solid', 'external-link' %>
-    <% end %>
     </div>
  </div>
+
   <div id="comicDisplay">
     <% if @comic %>
-      <h3>
-        <span class="comicTitle"><%= @comic.title %></span>
-      </h3>
-      <div class="comicWrapper" ondragstart="return false;">
+      <h3><%= @comic.title %></h3>
+      <div class="comicWrapper">
         <%= tag :img, {src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text} %>
       </div>
-      </div>
     <% end %>
-  <div class="controls">
-    <%= link_to navigate_previous_comic(params[:comic_num]), class: 'btn btn-light previous', title: 'Navigate to the previous comic' do %>
-      <%= faw_icon 'solid', 'chevron-left' %>
-    <% end %>
-    <%= link_to navigate_random_comic, class: 'btn btn-light random', title: 'Navigate to a random comic' do %>
-      <%= faw_icon 'solid', 'random' %>
-    <% end %>
-    <%= link_to navigate_next_comic(params[:comic_num]), class: 'btn btn-light next', title: 'Navigate to the next comic' do %>
-      <%= faw_icon 'solid', 'chevron-right' %>
-    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-start mt-4">
+    <div class="btn-group" role="group" aria-label="Comic navigation">
+      <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Previous comic" do %>
+        <%= faw_icon "solid", "chevron-left" %>
+      <% end %>
+      <%= link_to navigate_random_comic, class: "btn btn-outline-secondary", title: "Random comic" do %>
+        <%= faw_icon "solid", "random" %>
+      <% end %>
+      <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Next comic" do %>
+        <%= faw_icon "solid", "chevron-right" %>
+      <% end %>
+    </div>
   </div>
 </div>
