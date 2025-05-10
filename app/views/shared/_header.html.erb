@@ -2,13 +2,8 @@
   <div class="col d-flex align-items-start justify-content-between">
     <div>
       <h1>
-        XKCD
-        <% if @comic %>
-          #<span class="comicId"><%= @comic.num %></span>
-        <% else %>
-          <%= link_to root_url do %>
-            Iterator
-          <% end %>
+        <%= link_to root_url do %>
+          XKCD Iterator
         <% end %>
       </h1>
     </div>

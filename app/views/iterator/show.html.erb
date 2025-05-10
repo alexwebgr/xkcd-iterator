@@ -1,37 +1,41 @@
 <div class="col">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div class="btn-group" role="group" aria-label="Comic navigation">
-      <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Previous comic" do %>
-        <%= faw_icon "solid", "chevron-left" %>
-      <% end %>
-      <%= link_to navigate_random_comic, class: "btn btn-outline-secondary", title: "Random comic" do %>
-        <%= faw_icon "solid", "random" %>
-      <% end %>
-      <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Next comic" do %>
-        <%= faw_icon "solid", "chevron-right" %>
-      <% end %>
-    </div>
-    <div class="btn-group" role="group" aria-label="Comic actions">
-      <% if favorited(params[:comic_num]).present? %>
-        <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), data: { "turbo-method": :delete }, class: "btn btn-outline-secondary", title: "Remove from favorites" do %>
-          <%= faw_icon "solid", "star", {extra_class: "favorited"} %>
-        <% end %>
-      <% else %>
-        <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: "btn btn-outline-secondary", title: "Add to favorites" do %>
-          <%= faw_icon "solid", "star" %>
-        <% end %>
-      <% end %>
-      <%= link_to navigate_xkcd(params[:comic_num]), class: "btn btn-outline-secondary", title: "View on xkcd.com", target: "_blank" do %>
-        <%= faw_icon "solid", "external-link" %>
-      <% end %>
-    </div>
- </div>
+  <div class="btn-group my-3" role="group" aria-label="Comic navigation">
+    <%= link_to navigate_previous_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Previous comic" do %>
+      <%= faw_icon "solid", "chevron-left" %>
+    <% end %>
+    <%= link_to navigate_random_comic, class: "btn btn-outline-secondary", title: "Random comic" do %>
+      <%= faw_icon "solid", "random" %>
+    <% end %>
+    <%= link_to navigate_next_comic(params[:comic_num]), class: "btn btn-outline-secondary", title: "Next comic" do %>
+      <%= faw_icon "solid", "chevron-right" %>
+    <% end %>
+  </div>
 
   <div id="comicDisplay">
     <% if @comic %>
-      <h3><%= @comic.title %></h3>
-      <div class="comicWrapper" style="<%= !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}px; height: #{@comic.height}px;" : "" %>">
-        <%= tag :img, {src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text} %>
+      <h3>XKCD #<%= @comic.num %> | <%= @comic.title %></h3>
+      <div class="comicWrapper">
+        <div class="d-flex">
+          <div>
+            <%= tag :img, { src: @comic.img_url, class: 'comicPic', alt: @comic.alt_text, title: @comic.alt_text, style: !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}; height: #{@comic.height};" : "" } %>
+          </div>
+          <div class="ms-2">
+            <div class="btn-group-vertical" role="group" aria-label="Comic actions">
+              <% if favorited(params[:comic_num]).present? %>
+                <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), data: { "turbo-method": :delete }, class: "btn btn-outline-secondary", title: "Remove from favorites" do %>
+                  <%= faw_icon "solid", "star", {extra_class: "favorited"} %>
+                <% end %>
+              <% else %>
+                <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: "btn btn-outline-secondary", title: "Add to favorites" do %>
+                  <%= faw_icon "solid", "star" %>
+                <% end %>
+              <% end %>
+              <%= link_to navigate_xkcd(params[:comic_num]), class: "btn btn-outline-secondary", title: "View on xkcd.com", target: "_blank" do %>
+                <%= faw_icon "solid", "external-link" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
