@@ -10,7 +10,7 @@ fi
 # rm -f tmp/pids/server.pid
 echo "prepare db"
 # If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+if [ "$1" == "bundle" ] && [ "$2" == "exec" ] && [ "$3" == "foreman" ] && [ "$4" == "start" ]; then
   ./bin/rails db:prepare
   echo "prepared db"
 fi
