@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # require 'sidekiq/web'
   # mount Sidekiq::Web => '/sidekiq'
+  mount MissionControl::Jobs::Engine, at: "/jobs"
 
   get 'dashboard/show'
   delete 'dashboard/remove_from_faves/:favorite_id', to: 'dashboard#remove_from_faves', as: 'dashboard_remove_from_faves'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get 'home/subscribe'
   post 'home/do_subscribe'
 
-  get 'auth/google_oauth2'
+  post 'auth/google_oauth2'
   get 'auth/google_oauth2/callback' => 'login#google_auth'
 
   get 'login/show'

@@ -23,7 +23,7 @@
         <%= faw_icon 'solid', 'user' %>
       <% end %>
     <% else %>
-      <%= link_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google' do %>
+      <%= button_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google', data: { turbo: false } do %>
         <%= faw_icon 'brand', 'google' %>
       <% end %>
       <%= link_to login_show_path, class: 'btn btn-light', title: 'Login with email' do %>

@@ -17,6 +17,7 @@ gem 'puma'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'faw_icon', '~> 1.4.0'
 gem 'faw_files', git: "https://github.com/alexwebgr/faw_files.git", branch: 'main'
@@ -48,4 +49,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "solid_queue"
+gem "mission_control-jobs"
 gem "foreman"
