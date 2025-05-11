@@ -2,6 +2,8 @@ class ImportComicJob < ApplicationJob
   queue_as :default
 
   def perform(index)
+    return if index == 404
+
     uri = URI("https://xkcd.com/#{index}/info.0.json")
 
     res = Net::HTTP.get_response(uri)
