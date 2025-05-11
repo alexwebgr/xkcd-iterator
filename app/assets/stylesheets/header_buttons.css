@@ -1,0 +1,38 @@
+/* Styles for header navigation buttons */
+.header-nav-buttons {
+  display: inline-flex;
+}
+
+/* Fix form and button styling in header navigation */
+.header-nav-buttons form {
+  display: inline-block;
+  margin: 0;
+}
+
+/* Base button styling */
+.header-nav-buttons .btn,
+.header-nav-buttons form button {
+  margin: 0;
+  border-radius: 0;
+  border-width: 1px;
+}
+
+/* Middle buttons - remove right border */
+.header-nav-buttons > :not(:last-child) .btn,
+.header-nav-buttons > .btn:not(:last-child) {
+  border-right: 0;
+}
+
+/* First button in group */
+.header-nav-buttons > :first-child .btn,
+.header-nav-buttons > .btn:first-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Last button in group */
+.header-nav-buttons > :last-child .btn,
+.header-nav-buttons > .btn:last-child {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}

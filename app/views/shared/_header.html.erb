@@ -1,34 +1,42 @@
 <div class="row my-2">
   <div class="col d-flex align-items-start justify-content-between">
     <div>
-      <h1>
+      <h2>
         <%= link_to root_url do %>
           XKCD Iterator
         <% end %>
-      </h1>
+      </h2>
     </div>
     <div>
-      <% if admin_subscriber? %>
-        <%= link_to iterator_update_tree_path, class: 'btn btn-light', title: 'Make sure you are seeing the latest comic' do %>
-          <%= faw_icon 'solid', 'sync' %>
-        <% end %>
-      <% end %>
-      <%= link_to root_url, class: 'btn btn-light', title: 'Navigate to home page' do %>
-        <%= faw_icon 'solid', 'home' %>
-      <% end %>
       <% if logged_in %>
-        <%= link_to dashboard_show_path, class: 'btn btn-light', title: 'Dashboard' do %>
-          <%= faw_icon 'solid', 'user' %>
-        <% end %>
+        <div class="btn-group" role="group" aria-label="Navigation">
+          <% if admin_subscriber? %>
+            <%= link_to iterator_update_tree_path, class: 'btn btn-outline-secondary', title: 'Make sure you are seeing the latest comic' do %>
+              <%= faw_icon 'solid', 'sync' %>
+            <% end %>
+          <% end %>
+          <%= link_to root_url, class: 'btn btn-outline-secondary', title: 'Navigate to home page' do %>
+            <%= faw_icon 'solid', 'home' %>
+          <% end %>
+          <%= link_to dashboard_show_path, class: 'btn btn-outline-secondary', title: 'Dashboard' do %>
+            <%= faw_icon 'solid', 'user' %>
+          <% end %>
+          <%= link_to login_destroy_path, class: 'btn btn-outline-secondary', title: 'Logout', data: { 'turbo-method': :delete } do %>
+            <%= faw_icon 'solid', 'sign-out-alt' %>
+          <% end %>
+        </div>
       <% else %>
-        <span class="d-inline-block">
-          <%= button_to auth_google_oauth2_url, class: 'btn btn-light', title: 'Login with google', data: { turbo: false }, style: 'display: inline-block;' do %>
+        <div class="btn-group header-nav-buttons" role="group" aria-label="Navigation">
+          <%= link_to root_url, class: 'btn btn-outline-secondary', title: 'Navigate to home page' do %>
+            <%= faw_icon 'solid', 'home' %>
+          <% end %>
+          <%= button_to auth_google_oauth2_url, class: 'btn btn-outline-secondary', form: { data: { turbo: false } }, title: 'Login with Google' do %>
             <%= faw_icon 'brand', 'google' %>
           <% end %>
-        </span>
-        <%= link_to login_show_path, class: 'btn btn-light', title: 'Login with email' do %>
-          <%= faw_icon 'solid', 'magic' %>
-        <% end %>
+          <%= link_to login_show_path, class: 'btn btn-outline-secondary', title: 'Login with email' do %>
+            <%= faw_icon 'solid', 'magic' %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
