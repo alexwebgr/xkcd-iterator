@@ -57,7 +57,7 @@
           <tr>
             <td><%= subscription.label %></td>
             <td>
-              <% if subscription.active == 't' %>
+              <% if subscription.active? %>
                 <%= link_to dashboard_deactivate_subscription_path(subscription.subscriber_id), data: { 'turbo-method': :delete }, class: 'btn btn-light active', title: 'Unsubscribe' do %>
                   Unsubscribe
                 <% end %>
