@@ -10,6 +10,6 @@ class ActivateSubscriptionMailer < ApplicationMailer
     @subscriber = subscriber
     @ppr = BCrypt::Password.create(subscriber.email)
 
-    mail to: subscriber.email, subject: 'Verify your email address at XKCD Iterator'
+    mail to: subscriber.email, subject: 'Login at XKCD Iterator'
   end
 end

@@ -9,7 +9,7 @@ class LoginController < ApplicationController
     user = Subscriber.find_by(email: params[:email])
 
     if user.present?
-      ActivateSubscriptionMailer.do_send_magic_link(user).deliver_now
+      ActivateSubscriptionMailer.do_send_magic_link(user).deliver_later
     end
 
     flash[:primary] = 'If have subscribed to the newsletter you will receive an email shortly, then just follow the instruction on that email.'

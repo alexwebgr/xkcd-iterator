@@ -82,7 +82,8 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Comic ID</th>
+            <th>Comic Num</th>
             <th>Title</th>
             <th>Sent to</th>
             <th>Sent on</th>
@@ -91,6 +92,7 @@
         <tbody>
         <% current_subscriber.email_receipts.includes(:comic).order(created_at: :desc).each do |email_receipt| %>
           <tr>
+            <td><%= email_receipt.comic_id %></td>
             <td><%= email_receipt.comic.num %></td>
             <td>
               <%= link_to email_receipt.comic.title, iterator_show_path(email_receipt.comic.num), target: '_blank', title: 'Navigate to comic' %>

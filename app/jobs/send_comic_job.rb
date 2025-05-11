@@ -14,7 +14,7 @@ class SendComicJob < ApplicationJob
       comic = Comic.order(num: :asc).first
     end
 
-    if ComicSubMailer.do_send(subscriber, comic).deliver_now
+    if ComicSubMailer.do_send(subscriber, comic).deliver_later
       EmailReceipt.create({
         subscriber_id: subscriber.id,
         comic_id: comic.id,

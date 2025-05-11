@@ -21,6 +21,6 @@ class Subscriber < ApplicationRecord
   end
 
   def self.send_access_token_email(subscriber)
-    ActivateSubscriptionMailer.do_send(subscriber).deliver_now
+    ActivateSubscriptionMailer.do_send(subscriber).deliver_later
   end
 end
