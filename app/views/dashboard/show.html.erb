@@ -28,7 +28,7 @@
             <td>#<%= favorite.comic.num %></td>
             <td><%= favorite.created_at.strftime('%b %d, %Y') %></td>
             <td>
-              <%= link_to dashboard_remove_from_faves_path(favorite.id), data: { 'turbo-method': :delete }, class: 'btn btn-light btn-sm', title: 'Remove from favorites' do %>
+              <%= link_to dashboard_remove_from_faves_path(favorite.comic_id), data: { 'turbo-method': :delete }, class: 'btn btn-light btn-sm', title: 'Remove from favorites' do %>
                 <%= faw_icon 'solid', 'trash' %>
               <% end %>
             </td>

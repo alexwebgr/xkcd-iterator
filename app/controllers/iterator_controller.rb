@@ -10,18 +10,24 @@ class IteratorController < ApplicationController
   end
 
   def add_to_faves
-    Favorite.find_or_create_by({
-                                 subscriber_id: current_subscriber.id,
-                                 comic_id: @comic.id
-                               })
+    comic = Comic.find_by(id: params[:comic_id])
+    comics_fave = current_subscriber.favorites.new(comic: comic)
 
-    redirect_back(fallback_location: root_url)
+    if comics_fave.save
+      render turbo_stream: turbo_stream.update("comic-actions-#{comic.id}",
+        partial: 'comic_actions',
+        locals: { comic_id: comic.id })
+    else
+      render_message(:danger, :unprocessable_entity, comics_fave.errors.full_messages.join(', '))
+    end
   end
 
   def remove_from_faves
-    current_subscriber.favorites.destroy(params[:favorite_id])
+    current_subscriber.favorites.where(comic_id: params[:comic_id]).destroy_all
 
-    redirect_back(fallback_location: root_url)
+    render turbo_stream: turbo_stream.update("comic-actions-#{params[:comic_id]}",
+      partial: 'comic_actions',
+      locals: { comic_id: params[:comic_id] })
   end
 
   def update_tree

@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
   end
 
   def remove_from_faves
-    current_subscriber.favorites.destroy(params[:favorite_id])
+    current_subscriber.favorites.where(comic_id: params[:comic_id]).destroy_all
 
     redirect_back(fallback_location: dashboard_show_path)
   end

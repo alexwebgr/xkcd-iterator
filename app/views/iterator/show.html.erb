@@ -20,19 +20,8 @@
             <%= tag :img, { src: @comic.img_url, class: 'comicPic img-fluid', alt: @comic.alt_text, title: @comic.alt_text, style: !@comic.width.zero? && !@comic.height.zero? ? "width: #{@comic.width}; height: #{@comic.height};" : "" } %>
           </div>
           <div class="ms-2">
-            <div class="btn-group-vertical" role="group" aria-label="Comic actions">
-              <% if favorited(params[:comic_num]).present? %>
-                <%= link_to iterator_remove_from_faves_path(favorited(params[:comic_num])[0].id), data: { "turbo-method": :delete }, class: "btn btn-outline-secondary", title: "Remove from favorites" do %>
-                  <%= faw_icon "solid", "star", {extra_class: "favorited"} %>
-                <% end %>
-              <% else %>
-                <%= link_to iterator_add_to_faves_path(params[:comic_num]), class: "btn btn-outline-secondary", title: "Add to favorites" do %>
-                  <%= faw_icon "solid", "star" %>
-                <% end %>
-              <% end %>
-              <%= link_to navigate_xkcd(params[:comic_num]), class: "btn btn-outline-secondary", title: "View on xkcd.com", target: "_blank" do %>
-                <%= faw_icon "solid", "external-link" %>
-              <% end %>
+            <div class="btn-group-vertical" role="group" aria-label="Comic actions" id="comic-actions-<%= @comic.id %>">
+              <%= render partial: 'comic_actions', locals: { comic_id: @comic.id } %>
             </div>
           </div>
         </div>

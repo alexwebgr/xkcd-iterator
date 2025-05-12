@@ -25,8 +25,8 @@ module ApplicationHelper
     "http://xkcd.com/#{id}"
   end
 
-  def favorited(comic_num)
-    comic = Comic.by_num(comic_num)
+  def favorite?(comic_id)
+    comic = Comic.find_by(id: comic_id)
     Favorite
       .where(subscriber_id: current_subscriber)
       .where(comic_id: comic)

@@ -1,0 +1,18 @@
+<% if favorite?(comic_id).present? %>
+  <%= link_to iterator_remove_from_faves_path(comic_id),
+              data: { "turbo-method": :delete },
+              class: "btn btn-outline-secondary",
+              title: "Remove from favorites" do %>
+    <%= faw_icon "solid", "star", {extra_class: "favorited"} %>
+  <% end %>
+<% else %>
+  <%= link_to iterator_add_to_faves_path(comic_id),
+              data: { "turbo-method": :post },
+              class: "btn btn-outline-secondary",
+              title: "Add to favorites" do %>
+    <%= faw_icon "solid", "star" %>
+  <% end %>
+<% end %>
+<%= link_to navigate_xkcd(params[:comic_num]), class: "btn btn-outline-secondary", title: "View on xkcd.com", target: "_blank" do %>
+  <%= faw_icon "solid", "external-link" %>
+<% end %>
