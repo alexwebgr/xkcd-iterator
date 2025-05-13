@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # require 'sidekiq/web'
-  # mount Sidekiq::Web => '/sidekiq'
   mount MissionControl::Jobs::Engine, at: "/jobs"
 
   get 'dashboard/show'
@@ -25,12 +23,7 @@ Rails.application.routes.draw do
   post 'login/send_magic_link'
   delete 'login/destroy'
 
-  resources :email_receipts do
-    collection do
-      get 'populate_receipts'
-    end
-  end
-
+  resources :email_receipts
   resources :favorites
   resources :comics
   resources :subscriptions

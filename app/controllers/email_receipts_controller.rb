@@ -61,12 +61,6 @@ class EmailReceiptsController < ApplicationController
     end
   end
 
-  def populate_receipts
-    EmailReceipt.populate_receipts
-
-    redirect_back(fallback_location: dashboard_show_path)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_email_receipt
