@@ -97,6 +97,8 @@ Rails.application.configure do
     user_name:      Rails.application.credentials['SMTP_USERNAME'],
     password:       Rails.application.credentials['SMTP_PASSWORD'],
     domain:         Rails.application.credentials['SMTP_HOST'],
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 60,
+    read_timeout: 60
   }
 end
