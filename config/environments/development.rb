@@ -70,17 +70,5 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 
-  config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.default_url_options = { host: Rails.application.credentials['SMTP_HOST'] }
-
-  ActionMailer::Base.smtp_settings = {
-    address:        Rails.application.credentials['SMTP_ADDRESS'],
-    port:           Rails.application.credentials['SMTP_PORT'],
-    authentication: :plain,
-    user_name:      Rails.application.credentials['SMTP_USERNAME'],
-    password:       Rails.application.credentials['SMTP_PASSWORD'],
-    domain:         Rails.application.credentials['SMTP_HOST'],
-    enable_starttls_auto: true
-  }
 end

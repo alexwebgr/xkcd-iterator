@@ -92,6 +92,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
+    csv (3.3.5)
     date (3.4.1)
     drb (2.2.1)
     erubi (1.13.1)
@@ -115,6 +116,10 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
+    httparty (0.24.2)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -272,6 +277,8 @@ GEM
       psych (>= 4.0.0)
     reline (0.6.1)
       io-console (~> 0.5)
+    resend (1.0.0)
+      httparty (>= 0.21.0)
     securerandom (0.4.1)
     snaky_hash (2.0.1)
       hashie
@@ -330,6 +337,7 @@ DEPENDENCIES
   propshaft (~> 1.1)
   puma
   rails (~> 8.0.0)
+  resend
   solid_queue
   stimulus-rails
   turbo-rails

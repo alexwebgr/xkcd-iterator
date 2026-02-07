@@ -53,3 +53,4 @@ gem "mission_control-jobs"
 gem "foreman"
 
 gem "fastimage", "~> 2.4"
+gem "resend"
