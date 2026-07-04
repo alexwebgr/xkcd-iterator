@@ -10,7 +10,7 @@ class ComicSubMailer < ApplicationMailer
     )
 
     Resend::Emails.send({
-      from: 'onboarding@resend.dev', # Use your verified domain
+      from: 'onboarding@resend.dev',
       to: [subscriber.email],
       subject: "XKCD ##{comic.num}",
       html: html_body
