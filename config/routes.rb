@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount MissionControl::Jobs::Engine, at: "/jobs"
-
   get 'dashboard/show'
   delete 'dashboard/remove_from_faves/:comic_id', to: 'dashboard#remove_from_faves', as: 'dashboard_remove_from_faves'
   get 'dashboard/activate_subscription/:subscriber_id', to: 'dashboard#activate_subscription', as: 'dashboard_activate_subscription'

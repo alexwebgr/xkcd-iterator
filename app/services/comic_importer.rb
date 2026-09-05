@@ -1,23 +1,33 @@
 # frozen_string_literal: true
 
 class ComicImporter
-  def self.call
-    new.call
+  def self.call(inline: false)
+    new.call(inline: inline)
   end
 
-  def call
+  def call(inline: false)
     last_num = Comic.last_num
     from = last_num == 1 ? last_num : last_num + 1
     to = latest[:num]
 
-    import(from, to)
+    import(from, to, inline: inline)
   end
 
-  def import(from, to)
+  def import(from, to, inline: false)
     range = (from..to)
     comics = Comic.where(num: range).pluck(:num)
+    failures = []
 
-    (range.to_a - comics).each {|i| ImportComicJob.perform_later(i) }
+    (range.to_a - comics).each do |i|
+      begin
+        inline ? ImportComicJob.perform_now(i) : ImportComicJob.perform_later(i)
+      rescue => e
+        failures << i
+        Rails.logger.error("[ComicImporter] failed to import comic ##{i}: #{e.class}: #{e.message}\n#{e.backtrace&.first(10)&.join("\n")}")
+      end
+    end
+
+    failures
   end
 
   def latest

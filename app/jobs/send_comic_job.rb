@@ -14,14 +14,17 @@ class SendComicJob < ApplicationJob
       comic = Comic.order(num: :asc).first
     end
 
-    if ComicSubMailer.do_send(subscriber, comic).deliver_later
-      EmailReceipt.create({
-        subscriber_id: subscriber.id,
-        comic_id: comic.id,
-        num: comic.num,
-        subscription: Subscription.where(subs_name: 'comic_sub').where(subscriber_id: subscriber.id).first
-      })
-    end
+    # do_send bypasses ActionMailer's `mail(...)` DSL and sends via the Resend API directly,
+    # so deliver_now's return value isn't meaningful here (it's always nil). Success is
+    # "didn't raise" - a Resend failure propagates up and skips the receipt below.
+    ComicSubMailer.do_send(subscriber, comic).deliver_now
+
+    EmailReceipt.create({
+      subscriber_id: subscriber.id,
+      comic_id: comic.id,
+      num: comic.num,
+      subscription: Subscription.where(subs_name: 'comic_sub').where(subscriber_id: subscriber.id).first
+    })
   end
 
   def last_comic(comic)

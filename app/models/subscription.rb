@@ -36,6 +36,17 @@ class Subscription < ApplicationRecord
                          .where(active: true)
                          .pluck('subscriber_id')
 
-    subscriber_ids.each { |subscriber_id| SendComicJob.perform_later(subscriber_id) }
+    failures = []
+
+    subscriber_ids.each do |subscriber_id|
+      begin
+        SendComicJob.perform_now(subscriber_id)
+      rescue => e
+        failures << subscriber_id
+        Rails.logger.error("[Subscription.send_comic] failed to send comic to subscriber ##{subscriber_id}: #{e.class}: #{e.message}\n#{e.backtrace&.first(10)&.join("\n")}")
+      end
+    end
+
+    failures
   end
 end

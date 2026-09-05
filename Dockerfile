@@ -83,4 +83,4 @@ USER 1000:1000
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-CMD ["bundle", "exec", "foreman", "start", "-f", "Procfile"]
+CMD ["./bin/rails", "server", "-p", "4000"]
