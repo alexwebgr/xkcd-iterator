@@ -1,0 +1,8 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "deploy": {
+    "startCommand": "bin/rails cron:update_tree",
+    "cronSchedule": "0 4 * * 0",
+    "restartPolicyType": "NEVER"
+  }
+}

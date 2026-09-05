@@ -1,0 +1,8 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "deploy": {
+    "startCommand": "bin/rails cron:daily_newsletter",
+    "cronSchedule": "0 5 * * *",
+    "restartPolicyType": "NEVER"
+  }
+}
